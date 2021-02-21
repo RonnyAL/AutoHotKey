@@ -4,9 +4,10 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-TVRegex = (s)?(eason)?(\h*)?(?<Season>0?(\d\d?))(.*)?(e)?(pisode)?(\h*)?(?<Episode>([\d]{2})|0?(\d\d?)([\d]{2})|0?(\d\d?)x([\d]{2}))
+TVRegex = (?<=[S|s])?(?<Season>\d{1,2})[E|e|X|x](?<Episode>\d{1,3})
 
 SubExtensions := ["srt", "sub", "ssa", "ttml", "sbv", "vtt"]
+VideoExtensions := ["mp4", "avi", "mkv"]
 RenameActions := []
 activePath =
 
@@ -21,11 +22,12 @@ LanguageCodeEdit =
 	activePath := GetActiveExplorerPath()
 	VideoFiles := []
 	SubtitleFiles := []
+	RenameActions := []
 	
 	Loop, Files, %activePath%\*
 		If HasVal(SubExtensions, A_LoopFileExt)
 			SubtitleFiles.Push(A_LoopFileName)
-		Else
+		Else If HasVal(VideoExtensions, A_LoopFileExt)
 			VideoFiles.Push(A_LoopFileName)
 	For index, v_filename in VideoFiles
 	{
@@ -80,15 +82,18 @@ ShowGui() {
 	global RenameActions
 	global activePath
 	global vActionsListView
-
+	
+	Gui, Destroy
+	
 	Gui, Font, s15
 	Gui, Add, Text,,Subtitle renamer
-	
 	Gui, Font, s9
 	Gui, Add, ListView, AltSubmit -Multi Checked Hdr r20 w600 vActionsListView, |Episode|Video file|Subtitle file
+	LV_Delete()
 	
 	For index, action in RenameActions
 		LV_Add("", Checked, action.ep, action.video, action.sub)
+
 	LV_Modify(0, "Check")
 	LV_ModifyCol()
 	
