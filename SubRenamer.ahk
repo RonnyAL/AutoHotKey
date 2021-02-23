@@ -81,7 +81,7 @@ UpdateGui() {
 
 CreateGui:
 	Gui, SubRenamer:Font, s15
-	Gui, SubRenamer:Add, Text,,Subtitle renamer
+	Gui, SubRenamer:Add, Text,,Subtitle Renamer
 	Gui, SubRenamer:Font, s9
 	Gui, SubRenamer:Add, ListView, AltSubmit -Multi Checked Hdr r20 w800 vActionsListView, |Episode|Video file|Subtitle file
 	LV_ModifyCol(2, "Text")
