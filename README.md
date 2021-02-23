@@ -4,7 +4,7 @@ This repository is used to store my .ahk scripts.
 ## Current scripts
 Script name | Short description
 ------------ | -------------
-[SubRenamer.ahk](#SubRenamer.ahk) | Tool for batch pairing video files with subtitle files and renaming the subtitle files
+[subrenamerahk](#SubRenamer.ahk) | Tool for batch pairing video files with subtitle files and renaming the subtitle files
 
 ### SubRenamer.ahk
 <sub>[Download](SubRenamer.ahk)</sub>
