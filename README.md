@@ -9,4 +9,4 @@ Script name | Short description
 ### SubRenamer.ahk
 Attempts to match video and subtitle files in a specified folder. Useful for situations where you manually downloaded a set of subtitles and need to rename them to autoload in media players.
 
-Download [here](SubRenamer.ahk).
+<sub>Download [here](SubRenamer.ahk)</sub>
