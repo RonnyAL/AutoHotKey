@@ -136,7 +136,6 @@ LoadFolder(FolderPath) {
 	
 	if (RenameActions.MaxIndex() < 1 && ActivePath != "")
 		MsgBox, Found no video files with matching subtitles!
-	MsgBox % ActivePath
 }
 
 OpenFolder:
